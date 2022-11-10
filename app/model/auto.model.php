@@ -34,17 +34,7 @@ class autoModel{
         return $autosbyid;
     }
 
-
-    public function pagination(){
-        $query = $this->db->prepare("SELECT * FROM autos LIMIT 5");
-        $query->execute();
-        $autosbyid = $query->fetchAll(PDO::FETCH_OBJ);
-        return $autosbyid;
-    
-    }
-
-    
-    
+ 
     public function insertAuto( $id_comprador ,$autos, $modelo, $color, $km) {
         $query = $this->db->prepare("INSERT INTO autos ( id_comprador,autos, modelo, color, km) VALUES (?,?, ?, ?, ?)");
         $query->execute([ $id_comprador,$autos, $modelo, $color, $km]);
