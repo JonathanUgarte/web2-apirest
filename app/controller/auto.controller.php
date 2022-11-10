@@ -24,6 +24,7 @@ class autoController{
   }
 
 public function showAll($params = NULL){
+
   if (isset($_GET['sortby']) && isset($_GET['order'])){
       if($_GET['order'] == 'ASC'){
           if($_GET['sortby'] == 'modelo')
@@ -33,6 +34,7 @@ public function showAll($params = NULL){
           if($_GET['sortby'] == 'modelo')
           $autosbyid = $this->model->orderDESC();//?sortby=modelo&order=DESC
       }
+  
   }
   else{
   $autosbyid = $this->model->getAll();
@@ -40,6 +42,7 @@ public function showAll($params = NULL){
   return $this->view->response($autosbyid, 200);
   
 }  
+
 
 
 public function showAutos($params = NULL) {

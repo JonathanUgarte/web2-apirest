@@ -70,14 +70,5 @@ class autoModel{
     }
 
    
-
-     public function EditAuto($id,$autos,$modelo,$color,$km){
-          $query = $this->db->prepare("UPDATE autos SET autos=?, modelo=?,color=?,km=? WHERE id_stock = ? ");
-          $query->execute(array($id,$autos,$modelo,$color,$km));
-        }
-
-    
-
-
 }
 
