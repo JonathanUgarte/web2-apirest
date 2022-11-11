@@ -34,7 +34,7 @@ class autoModel{
         return $autosbyid;
     }
 
- 
+    
     public function insertAuto( $id_comprador ,$autos, $modelo, $color, $km) {
         $query = $this->db->prepare("INSERT INTO autos ( id_comprador,autos, modelo, color, km) VALUES (?,?, ?, ?, ?)");
         $query->execute([ $id_comprador,$autos, $modelo, $color, $km]);
@@ -59,6 +59,10 @@ class autoModel{
        return $autosbyid;
     }
 
+    function update($id_comprador,$autos,$modelo,$color,$km,$id){
+        $query = $this->db->prepare('UPDATE autos SET id_comprador =?, autos =?,modelo=?, color=?, km=? WHERE id=?');
+        $query->execute([$id_comprador,$autos,$modelo,$color,$km,$id]);
+    }
    
 }
 

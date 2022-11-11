@@ -18,6 +18,12 @@ http://localhost/tpe-apirest/api/autos/id
 
  verbo http POST +  http://localhost/tpe-apirest/api/autos
 
+ # Editar auto por id :
+
+  verbo http PUT +  http://localhost/tpe-apirest/api/autos/id
+
+
+
 
 
 

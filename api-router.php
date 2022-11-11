@@ -8,6 +8,7 @@ $router->addRoute('autos', 'GET', 'autoController', 'showAll');
 $router->addRoute('autos', 'POST', 'autoController', 'addAutos');
 $router->addRoute('autos/:ID', 'GET', 'autoController', 'showAutos');
 $router->addRoute('autos/:ID', 'DELETE', 'autoController', 'delete');
+$router->addRoute('autos/:ID', 'PUT', 'autoController', 'updateAutos');
 
 
 

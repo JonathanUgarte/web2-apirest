@@ -28,20 +28,20 @@ public function showAll($params = NULL){
   if (isset($_GET['sortby']) && isset($_GET['order'])){
       if($_GET['order'] == 'ASC'){
           if($_GET['sortby'] == 'modelo')
-          $autosbyid = $this->model->orderASC();//?sortby=modelo&order=ASC
+          $autosbyid = $this->model->orderASC();
           }
       elseif ($_GET['order'] == 'DESC'){
           if($_GET['sortby'] == 'modelo')
-          $autosbyid = $this->model->orderDESC();//?sortby=modelo&order=DESC
+          $autosbyid = $this->model->orderDESC();
       }
-  
+      
   }
   else{
   $autosbyid = $this->model->getAll();
   }
   return $this->view->response($autosbyid, 200);
   
-}  
+} 
 
 
 
@@ -54,7 +54,7 @@ public function showAutos($params = NULL) {
   $this->view->response("El auto buscado con el id=$id no existe", 404);
 }
 
-public function addAutos($params = NULL){ //añadir un nuevo auto
+public function addAutos($params = NULL){ 
   $autosbyid = $this->getData();  
   
   if( empty($autosbyid->id_comprador)||empty($autosbyid->autos) || empty($autosbyid->modelo)|| empty($autosbyid->color)|| empty($autosbyid->km)){
@@ -79,24 +79,18 @@ $this->view->response("el auto con el id=$id no existe", 404);
   }
 
 
+  public function updateAutos($params = null){
+    $id = $params[':ID'];
+    $autos= $this->model->getAutobyid($id);
+    if ($autos){
+        $autos = $this->getData();
+        $this->model->update($autos->id_comprador,$autos->autos,$autos->modelo,$autos->color,$autos->km,$id);
+        $this->view->response("El auto con el id=$id se actualizo correctamente",200);
+        }else {
+        $this->view->response("El auto no existe",404);
+    }
+}
 
-  //function showFormEditAutos(){
-    //session_start();
-    //$this->view->showFormEdit();
-  //}
-
-   //public function editAuto($id) {
-    //$autosbyid=$this->model->getAutobyid($id);
-    //$this->view->showEdit($autosbyid);
-    //if (!empty($_POST['autos'])&& (!empty($_POST['modelo']))&& (!empty($_POST['color']))&&(!empty($_POST['km']))){
-    //$autos=$_POST['autos'];
-    //$modelo=$_POST['modelo'];
-    //$color=$_POST['color'];
-    //$km=$_POST['km'];
-    //$id=$this->model->EditAuto($autos,$modelo,$color,$km,$id);
-      //header("Location: " . BASE_URL."autos");
-  //}
-//}
 
 
 
